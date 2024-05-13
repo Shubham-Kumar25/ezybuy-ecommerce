@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import myContext from "./myContext";
 import {
-  Query,
   QuerySnapshot,
   Timestamp,
   addDoc,
   collection,
   onSnapshot,
   orderBy,
+  query,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { fireDB } from "../firebase/FirebaseConfig";
@@ -58,6 +58,9 @@ function myState(props) {
     try {
       await addDoc(productRef, products);
       toast.success("Product added successfully");
+      setTimeout(() => {
+        window.location.href = "/dashboard";
+      }, 1000);
       getProductData();
       setLoading(false);
     } catch (error) {
@@ -75,10 +78,10 @@ function myState(props) {
   const getProductData = async () => {
     setLoading(true);
     try {
-      const q = Query(collection(fireDB, "products"), orderBy("time"));
+      const q = query(collection(fireDB, "products"), orderBy("time"));
       const data = onSnapshot(q, (QuerySnapshot) => {
         let productsArray = [];
-        q.forEach((doc) => {
+        QuerySnapshot.forEach((doc) => {
           productsArray.push({ ...doc.data(), id: doc.id });
         });
         setProduct(productsArray);
@@ -88,7 +91,7 @@ function myState(props) {
     } catch (error) {
       console.log(error);
       setLoading(false);
-      return toast.error("Error in get Products");
+      // return toast.error("Error in get Products");
     }
   };
 
@@ -106,6 +109,7 @@ function myState(props) {
         products,
         setProducts,
         addProduct,
+        product,
       }}
     >
       {props.children}
