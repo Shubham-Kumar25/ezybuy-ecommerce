@@ -5,9 +5,12 @@ import {
   Timestamp,
   addDoc,
   collection,
+  deleteDoc,
+  doc,
   onSnapshot,
   orderBy,
   query,
+  setDoc,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { fireDB } from "../firebase/FirebaseConfig";
@@ -99,6 +102,45 @@ function myState(props) {
     getProductData();
   }, []);
 
+  const handleEdit = (item) => {
+    setProducts(item);
+  };
+
+  //update product
+
+  const updateProduct = async (item) => {
+    setLoading(true);
+
+    try {
+      await setDoc(doc(fireDB, "products", products.id), products);
+      toast.success("Product Updated successfully");
+      getProductData();
+      setLoading(false);
+      setTimeout(() => {
+        window.location.href = "/dashboard";
+      }, 1000);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+    setProducts("");
+  };
+
+  // delete product
+
+  const deleteProduct = async (item) => {
+    setLoading(true);
+    try {
+      await deleteDoc(doc(fireDB, "products", item.id));
+      toast.success("Product Deleted successfully");
+      getProductData();
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
   return (
     <myContext.Provider
       value={{
@@ -110,6 +152,9 @@ function myState(props) {
         setProducts,
         addProduct,
         product,
+        updateProduct,
+        deleteProduct,
+        handleEdit,
       }}
     >
       {props.children}
