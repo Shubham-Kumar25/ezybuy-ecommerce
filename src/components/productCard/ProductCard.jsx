@@ -38,10 +38,15 @@ function ProductCard() {
             .filter((obj) => obj.title.toLowerCase().includes(searchKey))
             .filter((obj) => obj.category.toLowerCase().includes(filterType))
             .filter((obj) => obj.price.includes(filterPrice))
+            .slice(0, 8)
             .map((item, index) => {
-              const { title, price, imageUrl, description } = item;
+              const { title, price, imageUrl, description, id } = item;
               return (
-                <div key={index} className="p-4 md:w-1/4 drop-shadow-lg ">
+                <div
+                  onClick={(e) => (window.location.href = `/productinfo/${id}`)}
+                  key={index}
+                  className="p-4 md:w-1/4 drop-shadow-lg "
+                >
                   <div
                     className="h-full overflow-hidden transition-shadow duration-300 ease-in-out border-2 border-gray-200 hover:shadow-gray-100 hover:shadow-xl border-opacity-60 rounded-2xl"
                     style={{

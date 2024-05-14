@@ -6,6 +6,7 @@ import Filter from "../../components/filter/Filter";
 import ProductCard from "../../components/productCard/ProductCard";
 import Track from "../../components/track/Track";
 import Testimonial from "../../components/testimonial/Testimonial";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -13,6 +14,12 @@ function Home() {
       <HeroSection />
       <Filter />
       <ProductCard />
+      <div className="flex justify-center mb-4 -mt-10">
+        <Link to={"/allproducts"}>
+          {" "}
+          <button className="px-5 py-2 bg-gray-300 rounded-xl">See More</button>
+        </Link>
+      </div>
       <Track />
       <Testimonial />
     </Layout>
