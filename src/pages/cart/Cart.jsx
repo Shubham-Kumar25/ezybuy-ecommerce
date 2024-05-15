@@ -133,7 +133,7 @@ function Cart() {
       >
         <h1 className="mb-10 text-2xl font-bold text-center">Cart Items</h1>
         <div className="justify-center mb-[60%] max-w-5xl px-6 mx-auto md:flex md:space-x-6 xl:px-0 ">
-          <div className="rounded-lg md:w-2/3 ">
+          <div className="rounded-lg overflow-y-auto max-h-[60vh] md:w-2/3 ">
             {cartItems.map((item, index) => {
               const { title, imageUrl, description, category, price } = item;
               return (

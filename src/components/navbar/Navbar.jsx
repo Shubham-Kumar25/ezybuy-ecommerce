@@ -16,14 +16,14 @@ export default function Navbar() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const logout = () => {
-    localStorage.clear("user");
+    localStorage.clear();
     window.location.href = "/";
   };
 
   const cartItems = useSelector((state) => state.cart);
 
   return (
-    <div className="sticky top-0 z-50 bg-white ">
+    <div className="sticky top-0 z-50 bg-white">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
@@ -69,12 +69,12 @@ export default function Navbar() {
                 <div className="px-4 py-6 space-y-6 border-t border-gray-200">
                   <Link
                     to={"/allproducts"}
-                    className="text-sm font-medium text-gray-900 "
+                    className="text-sm font-medium text-gray-900"
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     All Products
                   </Link>
-                  {user ? (
+                  {user && (
                     <div className="flow-root">
                       <Link
                         to={"/order"}
@@ -84,24 +84,18 @@ export default function Navbar() {
                         Order
                       </Link>
                     </div>
-                  ) : (
-                    ""
                   )}
-
-                  {user?.user?.email === "laxsharma01@gmail.com" ? (
+                  {user?.user?.email === "laxsharma01@gmail.com" && (
                     <div className="flow-root">
                       <Link
                         to={"/dashboard"}
                         className="block p-2 -m-2 font-medium text-gray-900"
                         style={{ color: mode === "dark" ? "white" : "" }}
                       >
-                        admin
+                        Admin
                       </Link>
                     </div>
-                  ) : (
-                    ""
                   )}
-
                   {user ? (
                     <div className="flow-root">
                       <a
@@ -123,7 +117,6 @@ export default function Navbar() {
                       </Link>
                     </div>
                   )}
-
                   <div className="flow-root">
                     <Link
                       to={"/"}
@@ -137,7 +130,6 @@ export default function Navbar() {
                     </Link>
                   </div>
                 </div>
-
                 <div className="px-4 py-6 border-t border-gray-200">
                   <a href="#" className="flex items-center p-2 -m-2">
                     <img
@@ -160,7 +152,7 @@ export default function Navbar() {
         </Dialog>
       </Transition.Root>
 
-      {/* desktop  */}
+      {/* Desktop */}
       <header className="relative bg-white">
         <p
           className="flex items-center justify-center h-10 px-4 text-sm font-medium text-white bg-pink-600 sm:px-6 lg:px-8"
@@ -174,7 +166,7 @@ export default function Navbar() {
 
         <nav
           aria-label="Top"
-          className="px-4 bg-gray-100 shadow-xl sm:px-6 lg:px-8 "
+          className="px-4 bg-gray-100 shadow-xl sm:px-6 lg:px-8"
           style={{
             backgroundColor: mode === "dark" ? "#282c34" : "",
             color: mode === "dark" ? "white" : "",
@@ -196,13 +188,13 @@ export default function Navbar() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth={1.5}
                   stroke="currentColor"
-                  class="w-6 h-6"
+                  className="w-6 h-6"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                   />
                 </svg>
@@ -213,7 +205,7 @@ export default function Navbar() {
                 <Link to={"/"} className="flex">
                   <div className="flex ">
                     <h1
-                      className="px-2 py-1 text-2xl font-bold text-black rounded "
+                      className="px-2 py-1 text-2xl font-bold text-black rounded"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       EzyBuy
@@ -226,39 +218,33 @@ export default function Navbar() {
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <Link
                     to={"/allproducts"}
-                    className="text-sm font-medium text-gray-700 "
+                    className="text-sm font-medium text-gray-700"
                     style={{ color: mode === "dark" ? "white" : "" }}
                   >
                     All Products
                   </Link>
-                  {user ? (
+                  {user && (
                     <Link
                       to={"/order"}
-                      className="text-sm font-medium text-gray-700 "
+                      className="text-sm font-medium text-gray-700"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Order
                     </Link>
-                  ) : (
-                    ""
                   )}
-
-                  {user?.user?.email === "laxsharma01@gmail.com" ? (
+                  {user?.user?.email === "laxsharma01@gmail.com" && (
                     <Link
                       to={"/dashboard"}
-                      className="text-sm font-medium text-gray-700 "
+                      className="text-sm font-medium text-gray-700"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Admin
                     </Link>
-                  ) : (
-                    ""
                   )}
-
                   {user ? (
                     <a
                       onClick={logout}
-                      className="text-sm font-medium text-gray-700 cursor-pointer "
+                      className="text-sm font-medium text-gray-700 cursor-pointer"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Logout
@@ -266,7 +252,7 @@ export default function Navbar() {
                   ) : (
                     <Link
                       to={"/login"}
-                      className="text-sm font-medium text-gray-700 cursor-pointer "
+                      className="text-sm font-medium text-gray-700 cursor-pointer"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       Login
@@ -275,7 +261,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="hidden lg:ml-8 lg:flex">
-                  <a href="#" className="flex items-center text-gray-700 ">
+                  <a href="#" className="flex items-center text-gray-700">
                     <img
                       src="https://ecommerce-sk.vercel.app/img/indiaflag.png"
                       alt=""
@@ -290,7 +276,7 @@ export default function Navbar() {
                   </a>
                 </div>
                 <div className="hidden lg:ml-8 lg:flex">
-                  <a href="#" className="flex items-center text-gray-700 ">
+                  <a href="#" className="flex items-center text-gray-700">
                     <img
                       className="inline-block w-10 h-10 rounded-full"
                       src="https://static-00.iconduck.com/assets.00/user-icon-2048x2048-ihoxz4vq.png"
@@ -304,10 +290,8 @@ export default function Navbar() {
                   <button className="" onClick={toggleMode}>
                     {mode === "light" ? (
                       <FiSun className="" size={30} />
-                    ) : "dark" ? (
-                      <BsFillCloudSunFill size={30} />
                     ) : (
-                      ""
+                      <BsFillCloudSunFill size={30} />
                     )}
                   </button>
                 </div>
@@ -333,9 +317,8 @@ export default function Navbar() {
                         d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
                       />
                     </svg>
-
                     <span
-                      className="ml-2 text-sm font-medium text-gray-700 group-"
+                      className="ml-2 text-sm font-medium text-gray-700"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
                       {cartItems.length}

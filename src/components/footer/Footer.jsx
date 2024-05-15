@@ -3,54 +3,47 @@ import { Link } from "react-router-dom";
 import myContext from "../../context/myContext";
 
 export default function Footer() {
-  const context = useContext(myContext);
-  const { toggleMode, mode } = context;
+  const { mode } = useContext(myContext);
+
+  const darkModeClasses = mode === "dark" ? "bg-gray-800 text-white" : "";
+
   return (
     <footer
-      className="text-gray-600 bg-gray-300 body-font"
-      style={{
-        backgroundColor: mode === "dark" ? "rgb(46 49 55)" : "",
-        color: mode === "dark" ? "white" : "",
-      }}
+      className={`text-gray-600 bg-gray-300 body-font ${darkModeClasses}`}
     >
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap order-first text-center md:text-left">
           <div className="w-full px-4 lg:w-1/4 md:w-1/2">
             <h2
-              className="mb-3 text-sm font-medium tracking-widest text-gray-900 title-font"
-              style={{ color: mode === "dark" ? "white" : "" }}
+              className={`mb-3 text-sm font-medium tracking-widest text-gray-900 title-font ${darkModeClasses}`}
             >
               CATEGORIES
             </h2>
             <nav className="mb-10 list-none">
               <li>
                 <a
-                  className="text-gray-600 hover:text-gray-800"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className={`text-gray-600 hover:text-gray-800 ${darkModeClasses}`}
                 >
                   Home
                 </a>
               </li>
               <li>
                 <a
-                  className="text-gray-600 hover:text-gray-800"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className={`text-gray-600 hover:text-gray-800 ${darkModeClasses}`}
                 >
                   Order
                 </a>
               </li>
               <li>
                 <a
-                  className="text-gray-600 hover:text-gray-800"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className={`text-gray-600 hover:text-gray-800 ${darkModeClasses}`}
                 >
                   Local For Vocal
                 </a>
               </li>
               <li>
                 <a
-                  className="text-gray-600 hover:text-gray-800"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className={`text-gray-600 hover:text-gray-800 ${darkModeClasses}`}
                 >
                   Cart
                 </a>
@@ -59,8 +52,7 @@ export default function Footer() {
           </div>
           <div className="w-full px-4 lg:w-1/4 md:w-1/2">
             <h2
-              className="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font"
-              style={{ color: mode === "dark" ? "white" : "" }}
+              className={`mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font ${darkModeClasses}`}
             >
               Customer Service
             </h2>
@@ -68,8 +60,7 @@ export default function Footer() {
               <li>
                 <Link
                   to={"/returnpolicy"}
-                  className="text-gray-600 hover:text-gray-800"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className={`text-gray-600 hover:text-gray-800 ${darkModeClasses}`}
                 >
                   Return Policy
                 </Link>
@@ -77,8 +68,7 @@ export default function Footer() {
               <li>
                 <Link
                   to={"/about"}
-                  className="text-gray-600 hover:text-gray-800"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className={`text-gray-600 hover:text-gray-800 ${darkModeClasses}`}
                 >
                   About
                 </Link>
@@ -86,8 +76,7 @@ export default function Footer() {
               <li>
                 <Link
                   to={"/contact"}
-                  className="text-gray-600 hover:text-gray-800"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className={`text-gray-600 hover:text-gray-800 ${darkModeClasses}`}
                 >
                   Contact Us
                 </Link>
@@ -97,8 +86,7 @@ export default function Footer() {
 
           <div className="w-full px-4 lg:w-1/4 md:w-1/2">
             <h2
-              className="mb-3 text-sm font-medium tracking-widest text-gray-900 title-font"
-              style={{ color: mode === "dark" ? "white" : "" }}
+              className={`mb-3 text-sm font-medium tracking-widest text-gray-900 title-font ${darkModeClasses}`}
             >
               Services
             </h2>
@@ -106,8 +94,7 @@ export default function Footer() {
               <li>
                 <Link
                   to={"/privacypolicy"}
-                  className="text-gray-600 hover:text-gray-800"
-                  style={{ color: mode === "dark" ? "white" : "" }}
+                  className={`text-gray-600 hover:text-gray-800 ${darkModeClasses}`}
                 >
                   Privacy
                 </Link>
@@ -115,40 +102,34 @@ export default function Footer() {
             </nav>
           </div>
           <div className="w-full px-4 lg:w-1/4 md:w-1/2">
-            <img src="https://ecommerce-sk.vercel.app/pay.png" alt="" />
+            <img
+              src="https://ecommerce-sk.vercel.app/pay.png"
+              alt="Payment Methods"
+            />
           </div>
         </div>
       </div>
 
-      <div
-        className="bg-gray-200"
-        style={{
-          backgroundColor: mode === "dark" ? "rgb(55 57 61)" : "",
-          color: mode === "dark" ? "white" : "",
-        }}
-      >
+      <div className={`bg-gray-200 ${mode === "dark" ? "bg-gray-700" : ""}`}>
         <div className="container flex flex-col items-center px-5 py-3 mx-auto sm:flex-row">
           <Link to={"/"} className="flex">
             <div className="flex ">
               <h1
-                className="px-2 py-1 text-2xl font-bold text-black rounded "
-                style={{ color: mode === "dark" ? "white" : "" }}
+                className={`px-2 py-1 text-2xl font-bold text-black rounded ${darkModeClasses}`}
               >
                 EzyBuy
               </h1>
             </div>
           </Link>
           <p
-            className="mt-4 text-sm text-gray-500 sm:ml-6 sm:mt-0"
-            style={{ color: mode === "dark" ? "white" : "" }}
+            className={`mt-4 text-sm text-gray-500 sm:ml-6 sm:mt-0 ${darkModeClasses}`}
           >
             © 2024 EzyBuy —
             <a
               href="https://twitter.com/knyttneve"
               rel="noopener noreferrer"
-              className="ml-1 text-gray-600"
+              className={`ml-1 text-gray-600 ${darkModeClasses}`}
               target="_blank"
-              style={{ color: mode === "dark" ? "white" : "" }}
             >
               www.ezybuy.com
             </a>
