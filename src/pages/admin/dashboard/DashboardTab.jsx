@@ -29,22 +29,22 @@ function DashboardTab() {
       <div className="container mx-auto">
         <div className="container mx-auto tab ">
           <Tabs defaultIndex={0} className="">
-            <TabList className="grid grid-cols-2 gap-4 mb-10 text-center md:flex md:space-x-8 bg- md:justify-center ">
+            <TabList className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 text-center md:flex md:space-x-8 bg-[#605d5d12] md:justify-center">
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 hover:shadow-purple-700 border-purple-500 text-purple-500 rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-5 py-1.5 text-center bg-[#605d5d12] "
+                  className="font-medium border-b-2 hover:shadow-purple-700 border-purple-500 text-purple-500 rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)] px-5 py-1.5 text-center bg-[#605d5d12]"
                 >
                   <div className="flex items-center gap-2">
                     <MdOutlineProductionQuantityLimits />
                     Products
-                  </div>{" "}
+                  </div>
                 </button>
               </Tab>
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 border-pink-500 bg-[#605d5d12] text-pink-500  hover:shadow-pink-700  rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]    px-5 py-1.5 text-center "
+                  className="font-medium border-b-2 border-pink-500 bg-[#605d5d12] text-pink-500 hover:shadow-pink-700 rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)] px-5 py-1.5 text-center"
                 >
                   <div className="flex items-center gap-2">
                     <AiFillShopping /> Order
@@ -54,7 +54,7 @@ function DashboardTab() {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
+                  className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-xl hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)] px-5 py-1.5 text-center"
                 >
                   <div className="flex items-center gap-2">
                     <FaUser /> Users
@@ -62,6 +62,7 @@ function DashboardTab() {
                 </button>
               </Tab>
             </TabList>
+
             {/* product  */}
             <TabPanel>
               <div className="px-4 mb-16 md:px-0">
