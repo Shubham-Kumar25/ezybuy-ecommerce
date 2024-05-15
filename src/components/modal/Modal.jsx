@@ -75,7 +75,7 @@ export default function Modal({
                               <input
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                type="name"
+                                type="text"
                                 name="name"
                                 id="name"
                                 className=" border outline-0 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-100"
@@ -140,7 +140,7 @@ export default function Modal({
                               closeModal();
                             }}
                             type="button"
-                            className="focus:outline-none w-full text-white bg-violet-600 bg-green-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 "
+                            className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 "
                           >
                             Order Now
                           </button>
